@@ -3,10 +3,18 @@ from random import randint as ran
 
 
 def game():
+    """Game of 2001."""
     print("In this game you can roll the following types of dice: (3, 4, 6, 8, 10, 12, 20, 100)-sided.")
     usr_pt = 0
     com_pt = 0
     while True:
+        """Calculate points and check if any side win.
+
+        :param int points
+
+        :rtype: int
+        :new_points
+        """
         usr_throws = 0
         while usr_throws == 0:
             usr_throws = dice(input("Choose the types of dices you wanna throw, between the dices type \",\"."))
@@ -35,13 +43,18 @@ def game():
 
 
 def dice(code: str):
+    """Throw the dices.
+
+    :rtype: str
+    :return: result of points
+    """
     dices = [3, 4, 6, 8, 10, 12, 20, 100]
     try:
         x = int(code[: code.index(",")])
         y = int(code[code.index(",") + 1:])
     except ValueError as ve:
         print(ve)
-        print("incorrect input")
+        print("Incorrect input!")
         return 0
     if x and y not in dices:
         print("There is no such dice!")
@@ -52,4 +65,5 @@ def dice(code: str):
     return result
 
 
-game()
+if __name__ == '__main__':
+    game()
